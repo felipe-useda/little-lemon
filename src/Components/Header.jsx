@@ -1,11 +1,13 @@
-import React from 'react'
+
 
 const Header = () => {
     return (
         <>
-            <img src='../src/assets/littlejourney.jpg' />
+            <div style={{ border: '1px solid red' }}>header</div>
         </>
     )
 }
 
 export default Header
+
+//<img src='../src/assets/littlejourney.jpg' />
