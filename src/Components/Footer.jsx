@@ -2,7 +2,7 @@
 
 const Footer = () => {
     return (
-        <div style={{ border: '1px solid blue' }}>Footer</div>
+        <div style={{ display: "flex", justifyContent: 'center', color: 'grey' }}>All rigth reserved to little lemon 2024</div>
     )
 }
 
