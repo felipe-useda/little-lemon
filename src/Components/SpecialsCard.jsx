@@ -1,8 +1,8 @@
 const SpecialsCard = () => {
     return (
         <>
-            <div style={{ display: 'flex', flexDirection: 'column', width: '350px', backgroundColor: '#DCDCDC', borderRadius: '16px' }}>
-                <img style={{ height: '300px', width: '350px', borderRadius: '16px' }} src="../../src/assets/book_table.png" />
+            <div style={{ display: 'grid', backgroundColor: '#DCDCDC', borderRadius: '16px' }}>
+                <img style={{ height: '300px', width: '100%', borderRadius: '16px' }} src="../../src/assets/book_table.png" />
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
                     <h4>Greek Salad</h4>
                     <h5 style={{ color: "#D2691E" }}>$12.45</h5>
