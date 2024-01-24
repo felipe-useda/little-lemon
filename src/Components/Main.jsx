@@ -6,16 +6,33 @@ import SpecialsCard from "./SpecialsCard"
 const Main = () => {
     const [reserveTable, setReserveTable] = useState(false)
     const [reserved, setReserved] = useState(false)
-    console.log(reserved);
-    console.log(reserveTable);
+    const [availableTime, setAvailableTime] = useState(['17:00', '18:00', '19:00', '20:00'])
+    const [selectedTime, setSelectedTime] = useState([])
+    const [ocation, setOcation] = useState('')
+    const [guets, setGuests] = useState('')
+    const [date, setDate] = useState('')
     const handleReserved = () => {
+        if (selectedTime) {
+            setAvailableTime((prevTime) => prevTime.filter((time) => time !== selectedTime))
+        }
         setReserveTable(false)
         setReserved(true)
     }
-
     const handleAnotherTable = () => {
         setReserveTable(true)
         setReserved(false)
+    }
+    const handleOcation = (e) => {
+        e.preventDefault()
+        setOcation(e.target.value);
+    }
+    const handleGuests = (e) => {
+        e.preventDefault()
+        setGuests(e.target.value);
+    }
+    const handleDate = (e) => {
+        e.preventDefault()
+        setDate(e.target.value);
     }
     return (
         <div>
@@ -28,28 +45,23 @@ const Main = () => {
                                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr', gap: '1vw' }}>
                                     <div className="booking_layout">
                                         <label className="label_text" htmlFor='res-date'>Date</label>
-                                        <input className="input_date" type="date" id="res-date" />
+                                        <input className="input_date" type="date" id="res-date" onChange={handleDate} />
                                     </div>
                                     <div className="booking_layout">
                                         <label className="label_text" htmlFor='res-time'>Time</label>
-                                        <select className="input_date" id="res-time ">
-                                            <option>17:00</option>
-                                            <option>18:00</option>
-                                            <option>19:00</option>
-                                            <option>20:00</option>
-                                            <option>21:00</option>
-                                            <option>22:00</option>
+                                        <select className="input_date" id="res-time " onChange={(e) => setSelectedTime(e.target.value)}>
+                                            {availableTime.map((item, index) => <option key={index}>{item}</option>)}
                                         </select>
                                     </div>
                                 </div>
                                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr', gap: '1vw', paddingTop: '2vh' }}>
                                     <div className="booking_layout">
                                         <label className="label_text" htmlFor='guests'>Guests</label>
-                                        <input className="input_date" type="number" placeholder="1" min="1" max="10" id="guests" />
+                                        <input className="input_date" type="number" placeholder="1" min="1" max="10" id="guests" onChange={handleGuests} />
                                     </div>
                                     <div className="booking_layout">
                                         <label className="label_text" htmlFor='ocation'>Occasion</label>
-                                        <select className="input_date" id="occasion">
+                                        <select className="input_date" id="occasion" onChange={handleOcation}>
                                             <option>Birthday</option>
                                             <option>Anniversary</option>
                                         </select>
@@ -67,6 +79,14 @@ const Main = () => {
                         <div className="book_table_button" onClick={() => setReserveTable(true)}>Book a table</div>
                     </div>) : (<div style={{ display: "flex", flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                         <h2 style={{ color: '#f4CE14' }}>Reservation confirmed!</h2>
+                        <div>
+                            <h3 style={{ color: 'white' }}>Booking information</h3>
+                            <h5 style={{ color: 'white' }}>Date: {date}</h5>
+                            <h5 style={{ color: 'white' }}>Time: {selectedTime}</h5>
+                            <h5 style={{ color: 'white' }}>Ocation: {ocation}</h5>
+                            <h5 style={{ color: 'white' }}>Guests: {guets}</h5>
+
+                        </div>
                         <div style={{ display: 'flex', justifyContent: 'center' }}>
                             <div className="book_table_button_another" onClick={handleAnotherTable}>Book another table</div>
                         </div>
