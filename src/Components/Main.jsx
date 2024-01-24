@@ -68,7 +68,7 @@ const Main = () => {
                                     </div>
                                 </div>
                                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '4vh' }}>
-                                    <div className="book_table_button" onClick={handleReserved} >Book a table</div>
+                                    <div id="book_a_table" className="book_table_button" onClick={handleReserved} >Book a table</div>
                                 </div>
                             </form>
                         </>
